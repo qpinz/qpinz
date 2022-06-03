@@ -1,0 +1,430 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  margin: 0;
+  background-color: #f6f7f8;
+  line-height: 1.4;
+  font-size: 1rem;
+  color: #354545;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  line-height: 1;
+}
+
+a {
+  text-decoration: none;
+  /* 拿掉底線 */
+  color: black;
+}
+
+ul,
+li {
+  list-style-type: none;
+  /* 拿掉前方圈圈 */
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes swing {
+  15% {
+    transform: translate(5px);
+  }
+
+  40% {
+    transform: translate(-5px);
+  }
+
+  65% {
+    transform: translate(2px);
+  }
+
+  85% {
+    transform: translate(-2px);
+  }
+
+  100% {
+    transform: translate(0px);
+  }
+}
+
+/*Header*/
+header {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 90px;
+  text-align: center;
+  background: #fff;
+  /* 陰影 */
+  -webkit-box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background: #fff;
+  transition: transform 0.2s ease-out;
+  /*200毫秒緩慢結束的 ease-out 效果*/
+  transform-origin: top;
+  /*設定效果起始點*/
+  transform: scale(1,
+      0);
+  /*第一個是 x 軸，第二個是 y 軸， 1是1倍 , 0則是不顯示*/
+}
+
+.navbar-brand {
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 90px;
+}
+
+.navbar-toggle:checked~.nav {
+  /*:checked勾選時生效*/
+  transform: scale(1, 1);
+  /* 給予 0 -> 1 讓Y軸顯示*/
+}
+
+.nav-item {
+  margin: 1.4rem 0;
+  /*預設透明度 0*/
+  opacity: 0;
+}
+
+.navbar-toggle:checked~.nav .nav-item {
+  transition: opacity 0.5s ease-out 0.15s;
+  opacity: 1;
+  /*開啟時透明度為1*/
+}
+
+/*漢堡排*/
+.hamburger {
+  position: relative;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  width: 30px;
+  height: 3px;
+  background: black;
+}
+
+.hamburger::before,
+.hamburger::after {
+  position: absolute;
+  left: 0;
+  content: "";
+}
+
+.hamburger::before {
+  position: absolute;
+  bottom: 8px;
+}
+
+.hamburger::after {
+  position: absolute;
+  top: 8px;
+}
+
+.navbar-toggle-label {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 7.5%;
+  display: flex;
+  align-items: center;
+}
+
+/*隱藏checkbox*/
+.navbar-toggle {
+  visibility: hidden;
+  position: absolute;
+}
+
+/*Card*/
+.card {
+  width: 400px;
+  height: 550px;
+  position: absolute;
+  top: 160px;
+  left: 80px;
+  display: flex;
+  flex-direction: column;
+  background: #f5f5f5;
+  box-shadow: 3px 5px 20px 6px #cccccc;
+}
+
+.card-background {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #163150;
+  background-size: cover;
+}
+
+.avatar img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* 填滿元素的寬度及高度(維持原比例) */
+  transition: all 1s ease 0s;
+  /* 緩慢 */
+}
+
+.avatar img:hover {
+  height: 170px;
+  border-radius: 5%;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-media {
+  height: 40px;
+  width: 100%;
+  background-color: #163150;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.name {
+  font-size: 25px;
+  margin: 30px;
+}
+
+.career {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.main-item {
+  margin-top: 30px;
+}
+
+.main-link-Resume {
+  position: absolute;
+  left: 35px;
+  bottom: 65px;
+  border: 1px solid #2d3047;
+  border-radius: 10px;
+  padding: 10px 15px;
+}
+
+.main-link-Codepen {
+  position: absolute;
+  left: 155px;
+  bottom: 65px;
+  border: 1px solid #2d3047;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.main-link-Github {
+  position: absolute;
+  left: 280px;
+  bottom: 65px;
+  border: 1px solid #2d3047;
+  border-radius: 10px;
+  padding: 10px 15px;
+}
+
+.main-link-Resume:hover {
+  background-color: #163150;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  animation: swing 2s 1;
+  transition: 1.2s;
+}
+
+.main-link-Codepen:hover {
+  background-color: #163150;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  animation: swing 2s 1;
+  transition: 1.2s;
+}
+
+.main-link-Github:hover {
+  background-color: #163150;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  animation: swing 2s 1;
+  transition: 1.2s;
+}
+
+.social-media {
+  position: absolute;
+  bottom: 0px;
+}
+
+.social-media-link {
+  margin: 10px;
+}
+
+.introduce {
+  display: none;
+}
+
+footer {
+  position: absolute;
+  bottom: -20px;
+  height: 20px;
+  width: 1870px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4a4a4a;
+  padding: 1rem;
+  color: white;
+  letter-spacing: 3px;
+}
+
+@media screen and (min-width: 660px) {
+  .navbar-toggle-label {
+    display: none;
+    /*checkbox隱藏*/
+  }
+
+  .nav {
+    all: unset;
+    /*nav的樣式重製*/
+    grid-column: 3 / 6;
+  }
+
+  .nav-item {
+    margin: 0;
+    opacity: 1;
+  }
+
+  header {
+    display: grid;
+    grid-template-colunms: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+
+  .navbar-brand {
+    grid-column: 1 / 3;
+  }
+
+  .nav-list {
+    height: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: end;
+    grid-gap: 2rem;
+    margin-right: 50px;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .background {
+    width: 100%;
+    height: 655px;
+    background-color: #4a4545;
+  }
+
+  .card {
+    position: absolute;
+    top: 30%;
+    left: 29%;
+    width: 800px;
+    height: 500px;
+  }
+
+  .name {
+    all: unset;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 7px;
+  }
+
+  .career {
+    all: unset;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 7px;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main-link-Resume {
+    position: absolute;
+    left: 160px;
+    bottom: 60px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #2d3047;
+    border-radius: 50%;
+  }
+
+  .main-link-Resume:hover {}
+
+  .main-link-Codepen {
+    position: absolute;
+    left: 360px;
+    bottom: 60px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #2d3047;
+    border-radius: 50%;
+  }
+
+  .main-link-Github {
+    position: absolute;
+    left: 560px;
+    bottom: 60px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #2d3047;
+    border-radius: 50%;
+  }
+
+  .social-media-link {
+    margin: 15px;
+  }
+
+  .introduce {
+    all: unset;
+    text-align: center;
+  }
+
+  .introduce-name {
+    font-size: 20px;
+    margin-top: 80px;
+  }
+}
